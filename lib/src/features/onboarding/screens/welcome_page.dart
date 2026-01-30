@@ -64,10 +64,13 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                       color: Colors.white.withValues(alpha: 0.1),
                     ),
-                    child: const Icon(
-                      Icons.restaurant,
-                      size: 60,
-                      color: Colors.white,
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/images/app_logo.png',
+                        fit: BoxFit.cover,
+                        width: 120,
+                        height: 120,
+                      ),
                     ),
                   )
                   .animate()

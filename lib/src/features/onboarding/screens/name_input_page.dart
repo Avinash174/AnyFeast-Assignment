@@ -30,7 +30,14 @@ class _NameInputPageState extends State<NameInputPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Center(
-            child: Icon(Icons.restaurant, color: AppColors.primary, size: 40),
+            child: SizedBox(
+              width: 60,
+              height: 60,
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/images/app_logo.png'),
+                backgroundColor: Colors.transparent,
+              ),
+            ),
           ).animate().fade().scale(duration: 400.ms, curve: Curves.easeOutBack),
           const SizedBox(height: 8),
           Center(
