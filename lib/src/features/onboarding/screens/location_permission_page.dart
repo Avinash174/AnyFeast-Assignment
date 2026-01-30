@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 import '../widgets/primary_button.dart';
@@ -16,63 +17,35 @@ class LocationPermissionPage extends StatelessWidget {
       child: Column(
         children: [
           const Spacer(),
-          // Location Icon Ring Animation
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                    width: 200,
-                    height: 200,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.red.withValues(alpha: 0.1),
-                      ),
-                    ),
-                  )
-                  .animate(onPlay: (controller) => controller.repeat())
-                  .scale(
-                    duration: 2000.ms,
-                    begin: const Offset(0.8, 0.8),
-                    end: const Offset(1.2, 1.2),
-                  )
-                  .fadeIn(duration: 1000.ms)
-                  .fadeOut(delay: 1000.ms, duration: 1000.ms),
-
-              Container(
-                    width: 150,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.red.withValues(alpha: 0.2),
-                      ),
-                    ),
-                  )
-                  .animate(
-                    onPlay: (controller) => controller.repeat(reverse: true),
-                  )
-                  .scale(
-                    duration: 1500.ms,
-                    begin: const Offset(0.9, 0.9),
-                    end: const Offset(1.1, 1.1),
+          // Location Icon with Avatar Glow
+          SizedBox(
+            height: 200,
+            width: 200,
+            child: AvatarGlow(
+              startDelay: const Duration(milliseconds: 1000),
+              glowColor: AppColors.primary,
+              glowShape: BoxShape.circle,
+              curve: Curves.fastOutSlowIn,
+              child: Material(
+                elevation: 8.0,
+                shape: const CircleBorder(),
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.primary,
                   ),
+                  child: const Icon(
+                    Icons.location_on,
+                    color: Colors.white,
+                    size: 40,
+                  ),
+                ),
+              ),
+            ),
+          ).animate().scale(duration: 600.ms, curve: Curves.elasticOut),
 
-              Container(
-                width: 100,
-                height: 100,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.primary,
-                ),
-                child: const Icon(
-                  Icons.location_on,
-                  color: Colors.white,
-                  size: 40,
-                ),
-              ).animate().scale(duration: 600.ms, curve: Curves.elasticOut),
-            ],
-          ),
           const SizedBox(height: 40),
           Text(
             'Find fresh, local\ningredients.',
