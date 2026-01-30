@@ -30,8 +30,8 @@ class LocationPermissionPage extends StatelessWidget {
                 elevation: 8.0,
                 shape: const CircleBorder(),
                 child: Container(
-                  width: 100,
-                  height: 100,
+                  width: 10,
+                  height: 10,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: AppColors.primary,
@@ -39,7 +39,7 @@ class LocationPermissionPage extends StatelessWidget {
                   child: const Icon(
                     Icons.location_on,
                     color: Colors.white,
-                    size: 40,
+                    size: 60,
                   ),
                 ),
               ),
