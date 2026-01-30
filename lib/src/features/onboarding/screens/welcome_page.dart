@@ -1,11 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 import '../widgets/primary_button.dart';
 import 'onboarding_screen.dart';
 
-class WelcomePage extends StatelessWidget {
+class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
+
+  @override
+  State<WelcomePage> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<WelcomePage> {
+  @override
+  void initState() {
+    super.initState();
+    // Hide status bar for splash/welcome feeling
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+  }
+
+  @override
+  void dispose() {
+    // Restore status bar when leaving this screen
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: SystemUiOverlay.values,
+    );
+    super.dispose();
+  }
+
+  void _navigateToOnboarding() {
+    // Restore before navigating
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: SystemUiOverlay.values,
+    );
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const OnboardingScreen()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,56 +54,82 @@ class WelcomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(),
-              // Logo placeholder or Icon
+              // Logo
               Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.white.withValues(alpha: 0.2),
-                    width: 1,
-                  ),
-                  color: Colors.white.withValues(alpha: 0.1),
-                ),
-                // If we had an SVG/Image, it would go here. Using Icon for now.
-                child: const Icon(
-                  Icons.restaurant_menu,
-                  size: 60,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 32),
-              Text(
-                'AnyFeast',
-                style: AppTextStyles.heading.copyWith(
-                  color: Colors.white,
-                  fontSize: 40,
-                ),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                'Meal planning, simplified.',
-                style: AppTextStyles.subHeading.copyWith(
-                  color: Colors.white.withValues(alpha: 0.8),
-                ),
-              ),
-              const Spacer(),
-              PrimaryButton(
-                text: 'Get Started',
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const OnboardingScreen(),
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.2),
+                        width: 1,
+                      ),
+                      color: Colors.white.withValues(alpha: 0.1),
                     ),
-                  );
-                },
-                // Customizing button for this screen if needed, but PrimaryButton defaults match well enough
-                // except maybe background color. Let's stick to standard for now, user can refine.
-                // Wait, design has specific button style on red background.
-                // It likely needs a white button with red text.
-              ),
+                    child: const Icon(
+                      Icons.restaurant,
+                      size: 60,
+                      color: Colors.white,
+                    ),
+                  )
+                  .animate()
+                  .fade(duration: 600.ms)
+                  .scale(
+                    delay: 200.ms,
+                    duration: 400.ms,
+                    curve: Curves.easeOutBack,
+                  ),
+
+              const SizedBox(height: 32),
+
+              Text(
+                    'AnyFeast',
+                    style: AppTextStyles.heading.copyWith(
+                      color: Colors.white,
+                      fontSize: 40,
+                    ),
+                  )
+                  .animate()
+                  .fade(delay: 400.ms)
+                  .slideY(
+                    begin: 0.3,
+                    end: 0,
+                    duration: 400.ms,
+                    curve: Curves.easeOut,
+                  ),
+
+              const SizedBox(height: 12),
+
+              Text(
+                    'Meal planning, simplified.',
+                    style: AppTextStyles.subHeading.copyWith(
+                      color: Colors.white.withValues(alpha: 0.8),
+                    ),
+                  )
+                  .animate()
+                  .fade(delay: 600.ms)
+                  .slideY(
+                    begin: 0.3,
+                    end: 0,
+                    duration: 400.ms,
+                    curve: Curves.easeOut,
+                  ),
+
+              const Spacer(),
+
+              PrimaryButton(
+                    text: 'Get Started',
+                    onPressed: _navigateToOnboarding,
+                  )
+                  .animate()
+                  .fade(delay: 800.ms)
+                  .slideY(
+                    begin: 1,
+                    end: 0,
+                    duration: 400.ms,
+                    curve: Curves.easeOut,
+                  ),
+
               // A small "Login" text below
               const SizedBox(height: 24),
               Row(
@@ -75,7 +137,9 @@ class WelcomePage extends StatelessWidget {
                 children: [
                   Text(
                     "Already have an account? ",
-                    style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.7),
+                    ),
                   ),
                   GestureDetector(
                     onTap: () {},
@@ -88,7 +152,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
+              ).animate().fade(delay: 1000.ms),
             ],
           ),
         ),

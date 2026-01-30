@@ -30,11 +30,7 @@ class _NameInputPageState extends State<NameInputPage> {
         children: [
           // Logo placeholder small
           const Center(
-            child: Icon(
-              Icons.restaurant_menu,
-              color: AppColors.primary,
-              size: 40,
-            ),
+            child: Icon(Icons.restaurant, color: AppColors.primary, size: 40),
           ),
           const SizedBox(height: 8),
           Center(
