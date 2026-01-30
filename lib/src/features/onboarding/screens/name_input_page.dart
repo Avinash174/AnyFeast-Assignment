@@ -60,7 +60,7 @@ class _NameInputPageState extends State<NameInputPage> {
             style: const TextStyle(fontSize: 24),
             decoration: InputDecoration(
               hintText: 'Your name',
-              hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5)),
+              hintStyle: TextStyle(color: Colors.grey.withValues(alpha: 0.5)),
               enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey),
               ),

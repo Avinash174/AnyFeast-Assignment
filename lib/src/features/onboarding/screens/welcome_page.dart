@@ -25,10 +25,10 @@ class WelcomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha: 0.2),
                     width: 1,
                   ),
-                  color: Colors.white.withOpacity(0.1),
+                  color: Colors.white.withValues(alpha: 0.1),
                 ),
                 // If we had an SVG/Image, it would go here. Using Icon for now.
                 child: const Icon(
@@ -49,7 +49,7 @@ class WelcomePage extends StatelessWidget {
               Text(
                 'Meal planning, simplified.',
                 style: AppTextStyles.subHeading.copyWith(
-                  color: Colors.white.withOpacity(0.8),
+                  color: Colors.white.withValues(alpha: 0.8),
                 ),
               ),
               const Spacer(),
@@ -75,7 +75,7 @@ class WelcomePage extends StatelessWidget {
                 children: [
                   Text(
                     "Already have an account? ",
-                    style: TextStyle(color: Colors.white.withOpacity(0.7)),
+                    style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
                   ),
                   GestureDetector(
                     onTap: () {},

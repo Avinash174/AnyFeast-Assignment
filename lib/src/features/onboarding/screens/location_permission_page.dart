@@ -24,7 +24,7 @@ class LocationPermissionPage extends StatelessWidget {
                 height: 200,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: Colors.red.withOpacity(0.1)),
+                  border: Border.all(color: Colors.red.withValues(alpha: 0.1)),
                 ),
               ),
               Container(
@@ -32,7 +32,7 @@ class LocationPermissionPage extends StatelessWidget {
                 height: 150,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: Colors.red.withOpacity(0.2)),
+                  border: Border.all(color: Colors.red.withValues(alpha: 0.2)),
                 ),
               ),
               Container(
