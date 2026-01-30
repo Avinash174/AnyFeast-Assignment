@@ -15,7 +15,7 @@ class CompletionPage extends StatelessWidget {
       child: Column(
         children: [
           const Spacer(),
-          // Wrap AvatarGlow in a widget to ensure valid animate chain
+
           SizedBox(
             child: AvatarGlow(
               glowColor: AppColors.primary,
@@ -27,7 +27,7 @@ class CompletionPage extends StatelessWidget {
                 height: 120,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xFFFFEBEE), // Light red bg
+                  color: Color(0xFFFFEBEE),
                 ),
                 padding: const EdgeInsets.all(24),
                 child: Container(
@@ -52,7 +52,7 @@ class CompletionPage extends StatelessWidget {
             textAlign: TextAlign.center,
           ).animate().fade(delay: 400.ms).slideY(begin: 0.5, end: 0),
           const SizedBox(height: 32),
-          // Meal card preview
+
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
@@ -74,7 +74,7 @@ class CompletionPage extends StatelessWidget {
                   child: Container(
                     height: 150,
                     width: double.infinity,
-                    color: Colors.grey[200], // Placeholder
+                    color: Colors.grey[200],
                     child: const Icon(
                       Icons.image,
                       size: 50,
@@ -128,9 +128,7 @@ class CompletionPage extends StatelessWidget {
           const Spacer(),
           PrimaryButton(
             text: 'Go to Dashboard',
-            onPressed: () {
-              // Navigate to main app
-            },
+            onPressed: () {},
           ).animate().fade(delay: 800.ms).slideY(begin: 1, end: 0),
           const SizedBox(height: 20),
         ],

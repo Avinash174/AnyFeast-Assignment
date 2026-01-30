@@ -29,7 +29,6 @@ class _NameInputPageState extends State<NameInputPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Logo placeholder small
           const Center(
             child: Icon(Icons.restaurant, color: AppColors.primary, size: 40),
           ).animate().fade().scale(duration: 400.ms, curve: Curves.easeOutBack),

@@ -17,7 +17,7 @@ class LocationPermissionPage extends StatelessWidget {
       child: Column(
         children: [
           const Spacer(),
-          // Location Icon with Avatar Glow
+
           SizedBox(
             height: 200,
             width: 200,

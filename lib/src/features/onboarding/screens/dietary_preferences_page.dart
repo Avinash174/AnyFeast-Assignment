@@ -14,7 +14,7 @@ class DietaryPreferencesPage extends StatefulWidget {
 }
 
 class _DietaryPreferencesPageState extends State<DietaryPreferencesPage> {
-  String _selectedPreference = 'Everything'; // Default
+  String _selectedPreference = 'Everything';
 
   @override
   Widget build(BuildContext context) {

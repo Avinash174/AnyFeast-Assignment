@@ -17,13 +17,12 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   void initState() {
     super.initState();
-    // Hide status bar for splash/welcome feeling
+
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   }
 
   @override
   void dispose() {
-    // Restore status bar when leaving this screen
     SystemChrome.setEnabledSystemUIMode(
       SystemUiMode.manual,
       overlays: SystemUiOverlay.values,
@@ -32,7 +31,6 @@ class _WelcomePageState extends State<WelcomePage> {
   }
 
   void _navigateToOnboarding() {
-    // Restore before navigating
     SystemChrome.setEnabledSystemUIMode(
       SystemUiMode.manual,
       overlays: SystemUiOverlay.values,
@@ -54,7 +52,7 @@ class _WelcomePageState extends State<WelcomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(),
-              // Logo
+
               Container(
                     width: 120,
                     height: 120,
@@ -130,7 +128,6 @@ class _WelcomePageState extends State<WelcomePage> {
                     curve: Curves.easeOut,
                   ),
 
-              // A small "Login" text below
               const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
