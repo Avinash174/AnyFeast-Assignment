@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 import '../widgets/primary_button.dart';
@@ -19,20 +20,26 @@ class CompletionPage extends StatelessWidget {
           // Let's assume OnboardingScreen hides AppBar for this page or we handle it.
           // In OnboardingScreen, I hid title/actions for index 3.
           const Spacer(),
-          Container(
-            width: 120,
-            height: 120,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: const Color(0xFFFFEBEE), // Light red bg
-            ),
-            padding: const EdgeInsets.all(24),
+          AvatarGlow(
+            glowColor: AppColors.primary,
+            glowRadiusFactor: 0.4,
+            duration: const Duration(milliseconds: 2000),
+            repeat: true,
             child: Container(
-              decoration: const BoxDecoration(
+              width: 120,
+              height: 120,
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColors.primary,
+                color: const Color(0xFFFFEBEE), // Light red bg
               ),
-              child: const Icon(Icons.check, color: Colors.white, size: 40),
+              padding: const EdgeInsets.all(24),
+              child: Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.primary,
+                ),
+                child: const Icon(Icons.check, color: Colors.white, size: 40),
+              ),
             ),
           ),
           const SizedBox(height: 32),
