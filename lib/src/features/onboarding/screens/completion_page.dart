@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 import '../widgets/primary_button.dart';
@@ -13,43 +14,43 @@ class CompletionPage extends StatelessWidget {
       padding: const EdgeInsets.all(24.0),
       child: Column(
         children: [
-          // We can add a close button at top right if needed, but the design shows it (Page 4)
-          // However, inside PageView, appbar handles it or we do it here.
-          // The design shows an X at top right, so maybe this page handles its own safe area/header?
-          // Current architecture has AppBar in OnboardingScreen.
-          // Let's assume OnboardingScreen hides AppBar for this page or we handle it.
-          // In OnboardingScreen, I hid title/actions for index 3.
           const Spacer(),
-          AvatarGlow(
-            glowColor: AppColors.primary,
-            glowRadiusFactor: 0.4,
-            duration: const Duration(milliseconds: 2000),
-            repeat: true,
-            child: Container(
-              width: 120,
-              height: 120,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: const Color(0xFFFFEBEE), // Light red bg
-              ),
-              padding: const EdgeInsets.all(24),
+          // Wrap AvatarGlow in a widget to ensure valid animate chain
+          SizedBox(
+            child: AvatarGlow(
+              glowColor: AppColors.primary,
+              glowRadiusFactor: 0.4,
+              duration: const Duration(milliseconds: 2000),
+              repeat: true,
               child: Container(
+                width: 120,
+                height: 120,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.primary,
+                  color: Color(0xFFFFEBEE), // Light red bg
                 ),
-                child: const Icon(Icons.check, color: Colors.white, size: 40),
+                padding: const EdgeInsets.all(24),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.primary,
+                  ),
+                  child: const Icon(Icons.check, color: Colors.white, size: 40),
+                ),
               ),
             ),
-          ),
+          ).animate().scale(duration: 600.ms, curve: Curves.easeOutBack),
           const SizedBox(height: 32),
-          Text("You're all set!", style: AppTextStyles.heading),
+          Text(
+            "You're all set!",
+            style: AppTextStyles.heading,
+          ).animate().fade(delay: 300.ms).slideY(begin: 0.5, end: 0),
           const SizedBox(height: 16),
           Text(
             'Your personalized meal plan is ready.',
             style: AppTextStyles.subHeading,
             textAlign: TextAlign.center,
-          ),
+          ).animate().fade(delay: 400.ms).slideY(begin: 0.5, end: 0),
           const SizedBox(height: 32),
           // Meal card preview
           Container(
@@ -73,8 +74,7 @@ class CompletionPage extends StatelessWidget {
                   child: Container(
                     height: 150,
                     width: double.infinity,
-                    color: Colors.grey[200], // Placeholder for image
-                    // If we had image asset: Image.asset(...)
+                    color: Colors.grey[200], // Placeholder
                     child: const Icon(
                       Icons.image,
                       size: 50,
@@ -124,14 +124,14 @@ class CompletionPage extends StatelessWidget {
                 const SizedBox(height: 8),
               ],
             ),
-          ),
+          ).animate().fade(delay: 600.ms).slideY(begin: 0.2, end: 0),
           const Spacer(),
           PrimaryButton(
             text: 'Go to Dashboard',
             onPressed: () {
               // Navigate to main app
             },
-          ),
+          ).animate().fade(delay: 800.ms).slideY(begin: 1, end: 0),
           const SizedBox(height: 20),
         ],
       ),

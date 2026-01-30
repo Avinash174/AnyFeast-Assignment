@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import '../../../constants/app_colors.dart';
 import '../../../constants/app_text_styles.dart';
 import '../widgets/primary_button.dart';
@@ -31,7 +32,7 @@ class _NameInputPageState extends State<NameInputPage> {
           // Logo placeholder small
           const Center(
             child: Icon(Icons.restaurant, color: AppColors.primary, size: 40),
-          ),
+          ).animate().fade().scale(duration: 400.ms, curve: Curves.easeOutBack),
           const SizedBox(height: 8),
           Center(
             child: Text(
@@ -42,14 +43,19 @@ class _NameInputPageState extends State<NameInputPage> {
                 letterSpacing: 1.5,
               ),
             ),
-          ),
+          ).animate().fade().slideY(begin: 0.5, end: 0),
+
           const SizedBox(height: 40),
-          Text('What is your name?', style: AppTextStyles.heading),
+          Text(
+            'What is your name?',
+            style: AppTextStyles.heading,
+          ).animate().fade(delay: 200.ms).slideX(begin: -0.2, end: 0),
           const SizedBox(height: 12),
           Text(
             'To personalize your kitchen experience.',
             style: AppTextStyles.subHeading,
-          ),
+          ).animate().fade(delay: 300.ms).slideX(begin: -0.2, end: 0),
+
           const SizedBox(height: 48),
           TextField(
             controller: _controller,
@@ -64,13 +70,15 @@ class _NameInputPageState extends State<NameInputPage> {
                 borderSide: BorderSide(color: AppColors.primary),
               ),
             ),
-          ),
+          ).animate().fade(delay: 400.ms).slideY(begin: 0.5, end: 0),
+
           const Spacer(),
           PrimaryButton(
             text: 'Next',
             onPressed: widget.onNext,
             fullWidth: true,
-          ),
+          ).animate().fade(delay: 600.ms).slideY(begin: 1, end: 0),
+
           const SizedBox(height: 20),
         ],
       ),
